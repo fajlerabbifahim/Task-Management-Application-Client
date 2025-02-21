@@ -1,6 +1,6 @@
 import { FaClock, FaTag, FaEdit, FaTrash } from "react-icons/fa";
 
-const TaskCard = ({ title, description, timestamp, category }) => {
+const TaskCard = ({ title, description, timestamp }) => {
   // Category Colors
   const categoryColors = {
     "To-Do": "bg-yellow-500",
@@ -9,7 +9,10 @@ const TaskCard = ({ title, description, timestamp, category }) => {
   };
 
   return (
-    <div className="p-4 rounded-lg shadow-md backdrop-blur-md bg-[#333333] bg-gradient-to-b from-[#333333] to-[#6d6e6f] border border-gray-600 max-w-md">
+    <div
+      draggable
+      className=" m-6 p-4 rounded-lg shadow-md backdrop-blur-md bg-[#333333] bg-gradient-to-b from-[#333333] to-[#6d6e6f] border border-gray-600 max-w-md"
+    >
       {/* Title Section */}
       <div className="flex justify-between items-center mb-3">
         <h2 className="text-xl font-semibold text-white">{title}</h2>
@@ -26,13 +29,6 @@ const TaskCard = ({ title, description, timestamp, category }) => {
         <div className="flex items-center text-gray-400 text-xs">
           <FaClock className="mr-1" />
           {timestamp}
-        </div>
-
-        <div
-          className={`flex items-center gap-2 text-xs text-white px-3 py-1 rounded-full ${categoryColors[category]}`}
-        >
-          <FaTag />
-          {category}
         </div>
 
         <button className="text-red-400 hover:text-red-500">
