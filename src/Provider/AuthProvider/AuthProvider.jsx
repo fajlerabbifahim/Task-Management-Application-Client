@@ -13,8 +13,6 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, googleProvider);
   };
 
-  const name = "fahim";
-
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -25,7 +23,7 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   // shear auth details
-  const authInfo = { name, signinWithGoogle };
+  const authInfo = { signinWithGoogle, user };
 
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

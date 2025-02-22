@@ -1,15 +1,16 @@
 import TaskCard from "../../../Components/TaskCard/TaskCard";
-import useAuth from "../../../Hooks/useAuth";
+import useUser from "../../../Hooks/useUser";
 
 const Home = () => {
-  const { name } = useAuth();
+  const [userData, isLoading] = useUser();
+  if (isLoading) return <h1 className="text-4xl">Loading</h1>;
   return (
     <div className="bg-[#333333] bg-gradient-to-b from-[#333333] to-[#6d6e6f] text-white p-4 h-full pt-40">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto gap-6   ">
         <div className="border-2 border-red-500 rounded-lg">
           <h1 className="text-center text-3xl pb-6 pt-6 border-b-2 ">TODO</h1>
           <TaskCard
-            title={name}
+            title={userData.name}
             description={
               "Ajke tanzila K chudbo, bashai niye aisa. onek ador korbo voda chudbo, dhon dhukabo, dud chuso"
             }
