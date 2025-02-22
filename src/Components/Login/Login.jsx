@@ -19,12 +19,9 @@ const Login = () => {
       photo: user.photoURL,
     };
 
-    axiosPublic.post("/user", newUser).then((res) => {
-      if (res.data.insertedId) {
-        localStorage.setItem("user", "loggedIn");
-        navigate("/");
-      }
-    });
+    axiosPublic.post("/user", newUser).then(() => {});
+    localStorage.setItem("user", "loggedIn");
+    navigate("/");
   };
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 px-6">
