@@ -1,10 +1,23 @@
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
+  const { signinWithGoogle } = useAuth();
+  const googleProvider = new GoogleAuthProvider();
   const navigate = useNavigate();
 
-  const handleGoogleLogin = () => {
+  const handleGoogleLogin = async () => {
+    const userData = await signinWithGoogle(googleProvider);
+    const user = userData.user;
+
+    const newUser = {
+      name: user.displayName,
+      email: user.email,
+      photo: user.photoURL,
+      role: "User",
+    };
     localStorage.setItem("user", "loggedIn");
     navigate("/");
   };

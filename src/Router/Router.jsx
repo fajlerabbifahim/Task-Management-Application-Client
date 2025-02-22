@@ -11,14 +11,14 @@ const router = createBrowserRouter([
   },
   {
     path: "/",
-    element: <PrivateRoute />, // Protecting routes
+    element: <PrivateRoute />,
     children: [
       {
         path: "/",
         element: <HomeLayout />,
         children: [
           {
-            index: true, // ✅ This ensures it matches the parent "/" correctly
+            index: true,
             element: <Home />,
           },
         ],
