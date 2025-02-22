@@ -23,7 +23,7 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   // shear auth details
-  const authInfo = { signinWithGoogle, user };
+  const authInfo = { signinWithGoogle, user, loading };
 
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
