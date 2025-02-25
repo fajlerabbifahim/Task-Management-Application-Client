@@ -1,22 +1,44 @@
-# Task Management Application
+# 📝 Task Management Application
 
-## Hey 👋 What's up?
+## 📌 Overview
 
-###
+The **Task Management Application** is a **drag-and-drop** based system that allows users to efficiently manage tasks. Users can **add, update, delete, and drag tasks to different categories** like **To-Do, In Progress, and Completed** for better organization.
 
-<p align="left">My name is Fajle Rabbi Fahim and I'm a web developer, from Bangladesh.</p>
+---
 
-###
+## 🚀 Features
 
-## Description
+✅ **Task Creation:** Users can create new tasks with a **title and description**.  
+✅ **Task Update:** Tasks can be edited and updated easily.  
+✅ **Task Delete:** Unwanted tasks can be deleted anytime.  
+✅ **Drag & Drop:** Users can drag tasks between categories **(To-Do, In Progress, Completed)**.  
+✅ **Real-Time Updates:** Integration with Firebase ensures **real-time data updates**.  
+✅ **Search & Filter:** Easily find tasks using search and filtering options.  
+✅ **Responsive Design:** Optimized for **mobile, tablet, and desktop** devices.  
+✅ **Authentication:** Secure login/logout using Firebase Authentication.  
+✅ **Backend Support:** Connected to a backend using **Node.js, Express.js, and MongoDB**.
 
-A simple task management application with drag-and-drop functionality to organize tasks into different categories. Users can add, update, delete, and drag tasks to change categories.
+---
 
-## Live Link
+## 🔗 Live Demo
 
-[Live Demo](your-live-link-here)
+[Click here to view the live project](https://task-mama.netlify.app/)
 
-## Dependencies
+---
+
+## 🛠️ Technologies Used
+
+- **Frontend:** React.js, React Router, Tailwind CSS
+- **State Management:** React Hooks
+- **Drag & Drop:** React DnD
+- **Authentication:** Firebase Authentication
+- **Backend:** Node.js, Express.js, MongoDB
+- **Database:** MongoDB Atlas
+- **API Requests:** Axios
+
+---
+
+## 📦 Dependencies
 
 - React
 - React Hook Form
@@ -24,8 +46,12 @@ A simple task management application with drag-and-drop functionality to organiz
 - Axios
 - Firebase
 - Tailwind CSS
+- Express.js
+- MongoDB
 
-## Installation Steps
+---
+
+## ⚙️ Installation Guide
 
 1. Clone the repository:
    ```sh
@@ -43,12 +69,3 @@ A simple task management application with drag-and-drop functionality to organiz
    ```sh
    npm run dev
    ```
-
-## Technologies Used
-
-- React.js
-- Firebase Authentication
-- Tailwind CSS
-- React Router
-- MongoDB & Express.js (for backend)
-- Node.js
