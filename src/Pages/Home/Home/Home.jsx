@@ -74,7 +74,7 @@ const Home = () => {
                   ref={provided.innerRef}
                   className="border-2 border-[#A5D6A7] rounded-lg p-4"
                 >
-                  <h1 className="text-center text-3xl pb-6 pt-6 border-b-2 border-[#A5D6A7]">
+                  <h1 className="text-center font-bold text-3xl pb-6 pt-6 border-b-2 border-[#A5D6A7]">
                     {category === "todo"
                       ? "TODO"
                       : category === "inProcess"
@@ -101,6 +101,7 @@ const Home = () => {
                               description={task.description}
                               timestamp={task.timeStamp}
                               id={task._id}
+                              refetch={refetch}
                             />
                           </div>
                         )}

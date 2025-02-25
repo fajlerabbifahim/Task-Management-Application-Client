@@ -1,20 +1,39 @@
 import { FaClock, FaEdit, FaTrash } from "react-icons/fa";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
-const TaskCard = ({ title, description, timestamp, id }) => {
+const TaskCard = ({ title, description, timestamp, id, refetch }) => {
   const axiosPublic = useAxiosPublic();
 
   const handleDeleteTask = (id) => {
-    console.log("delete this id", id);
-
-    axiosPublic
-      .delete(`/delete/${id}`)
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((e) => {
-        console.error("Error deleting task:", e);
-      });
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#28632b", // Green color from previous
+      cancelButtonColor: "#022404", // Dark green color from previous
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosPublic
+          .delete(`/delete/${id}`)
+          .then((res) => {
+            if (res.data.acknowledged) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success",
+                confirmButtonColor: "#28632b",
+              });
+              refetch();
+            }
+          })
+          .catch((e) => {
+            console.error("Error deleting task:", e);
+          });
+      }
+    });
   };
 
   return (
@@ -24,7 +43,7 @@ const TaskCard = ({ title, description, timestamp, id }) => {
     >
       {/* Title Section */}
       <div className="flex justify-between items-center mb-3">
-        <h2 className="text-2xl font-semibold text-white">{title}</h2>
+        <h2 className="text-lg font-semibold text-white">{title}</h2>
         <button className="text-[#C8E6C9] hover:text-white transition duration-200">
           <FaEdit size={18} />
         </button>
