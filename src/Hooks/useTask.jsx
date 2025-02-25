@@ -22,9 +22,6 @@ const useTask = () => {
     enabled: !!userData?.email,
   });
 
-  // Logging the fetched tasks
-  console.log("use task from task hook ", tasks);
-
   return [tasks, isLoading, refetch];
 };
 

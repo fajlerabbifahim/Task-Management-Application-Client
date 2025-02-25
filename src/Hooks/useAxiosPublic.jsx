@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosPublic = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "task-management-application-server-beryl.vercel.app",
 });
 const useAxiosPublic = () => {
   return axiosPublic;

@@ -38,8 +38,6 @@ const Home = () => {
         category: destination.droppableId,
       });
 
-      console.log("cate", destination.draggableId);
-
       refetch();
     } catch (error) {
       console.error("Error updating task category:", error);
