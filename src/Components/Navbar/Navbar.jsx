@@ -14,7 +14,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed top-0 w-full bg-gray-900 text-white p-4 z-50">
+      <nav className="fixed top-0 w-full backdrop-blur-xl text-[#1B5E20] p-4 z-50">
         <div className="container mx-auto flex justify-between items-center">
           <div className="flex items-center gap-6">
             <div className="text-xl font-bold">Task Management</div>

@@ -1,37 +1,49 @@
-import { FaClock, FaTag, FaEdit, FaTrash } from "react-icons/fa";
+import { FaClock, FaEdit, FaTrash } from "react-icons/fa";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
-const TaskCard = ({ title, description, timestamp }) => {
-  // Category Colors
-  const categoryColors = {
-    "To-Do": "bg-yellow-500",
-    "In Progress": "bg-blue-500",
-    Done: "bg-green-500",
+const TaskCard = ({ title, description, timestamp, id }) => {
+  const axiosPublic = useAxiosPublic();
+
+  const handleDeleteTask = (id) => {
+    console.log("delete this id", id);
+
+    axiosPublic
+      .delete(`/delete/${id}`)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((e) => {
+        console.error("Error deleting task:", e);
+      });
   };
 
   return (
     <div
       draggable
-      className=" m-6 p-4 rounded-lg shadow-md backdrop-blur-md bg-[#333333] bg-gradient-to-b from-[#333333] to-[#6d6e6f] border border-gray-600 max-w-md"
+      className="m-4 p-4 rounded-lg shadow-xl bg-gradient-to-b from-[#28632b] to-[#022404] border  max-w-md transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
     >
       {/* Title Section */}
       <div className="flex justify-between items-center mb-3">
-        <h2 className="text-xl font-semibold text-white">{title}</h2>
-        <button className="text-gray-300 hover:text-white">
+        <h2 className="text-2xl font-semibold text-white">{title}</h2>
+        <button className="text-[#C8E6C9] hover:text-white transition duration-200">
           <FaEdit size={18} />
         </button>
       </div>
 
       {/* Description */}
-      <p className="text-gray-300 text-sm mb-3">{description}</p>
+      <p className="text-[#E8F5E9]  text-sm mb-3">{description}</p>
 
       {/* Footer: Timestamp & Category */}
       <div className="flex justify-between items-center">
-        <div className="flex items-center text-gray-400 text-xs">
+        <div className="flex items-center text-[#9fd166] text-xs">
           <FaClock className="mr-1" />
           {timestamp}
         </div>
 
-        <button className="text-red-400 hover:text-red-500">
+        <button
+          onClick={() => handleDeleteTask(id)}
+          className="text-red-500 hover:text-red-600 transition duration-200"
+        >
           <FaTrash size={16} />
         </button>
       </div>

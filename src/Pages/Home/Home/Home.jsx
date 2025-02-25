@@ -26,7 +26,6 @@ const Home = () => {
 
     const { draggableId, destination } = result;
 
-    // ✅ লোকাল UI আপডেট করা (ডাটা পরিবর্তন)
     const updatedTasks = tasks.map((task) =>
       task._id === draggableId
         ? { ...task, category: destination.droppableId }
@@ -34,7 +33,6 @@ const Home = () => {
     );
     setTasks(updatedTasks);
 
-    // ✅ ব্যাকএন্ডে ডাটা পাঠানো
     try {
       await axiosPublic.patch(`/task/${draggableId}`, {
         category: destination.droppableId,
@@ -42,7 +40,7 @@ const Home = () => {
 
       console.log("cate", destination.draggableId);
 
-      refetch(); // ✅ নতুন ডাটা আনো
+      refetch();
     } catch (error) {
       console.error("Error updating task category:", error);
     }
@@ -51,11 +49,11 @@ const Home = () => {
   if (isLoading) return <h1>Loading......</h1>;
 
   return (
-    <div className="bg-[#333333] bg-gradient-to-b from-[#333333] to-[#6d6e6f] text-white p-4 h-full pt-28">
+    <div className=" bg-gradient-to-b bg-[#E8F5E9] text-[#1B5E20] p-4 h-full pt-28">
       <div className="flex justify-center pb-10">
         <button
           onClick={openModal}
-          className="text-xl border border-white px-6 py-2 rounded-lg"
+          className="text-xl border bg-gradient-to-b from-[#28632b] to-[#022404] text-white px-6 py-2 rounded-lg"
         >
           Add Task
         </button>
@@ -63,7 +61,7 @@ const Home = () => {
       <AddTaskModal
         isOpen={isModalOpen}
         onClose={closeModal}
-        refetch={refetch}
+        refetch={refetch()}
       />
 
       <DragDropContext onDragEnd={handleDragEnd}>
@@ -74,9 +72,9 @@ const Home = () => {
                 <div
                   {...provided.droppableProps}
                   ref={provided.innerRef}
-                  className="border-2 rounded-lg p-4"
+                  className="border-2 border-[#A5D6A7] rounded-lg p-4"
                 >
-                  <h1 className="text-center text-3xl pb-6 pt-6 border-b-2">
+                  <h1 className="text-center text-3xl pb-6 pt-6 border-b-2 border-[#A5D6A7]">
                     {category === "todo"
                       ? "TODO"
                       : category === "inProcess"
@@ -102,6 +100,7 @@ const Home = () => {
                               title={task.title}
                               description={task.description}
                               timestamp={task.timeStamp}
+                              id={task._id}
                             />
                           </div>
                         )}
