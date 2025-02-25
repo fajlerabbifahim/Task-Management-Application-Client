@@ -55,7 +55,7 @@ The **Task Management Application** is a **drag-and-drop** based system that all
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-repo-link.git
+   git clone https://github.com/fajlerabbifahim/Task-Management-Application-Client.git
    ```
 2. Navigate to the project directory:
    ```sh
