@@ -56,6 +56,9 @@ const Home = () => {
           Add Task
         </button>
       </div>
+
+      {/* add task modal */}
+
       <AddTaskModal
         isOpen={isModalOpen}
         onClose={closeModal}
