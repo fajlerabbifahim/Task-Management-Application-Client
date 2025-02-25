@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 
 const useTask = () => {
   const axiosPublic = useAxiosPublic();
-  const [userData, isLoadingUser] = useUser();
+  const [userData] = useUser();
 
   const {
     data: tasks,
@@ -23,9 +23,9 @@ const useTask = () => {
   });
 
   // Logging the fetched tasks
-  console.log("use task ", tasks);
+  console.log("use task from task hook ", tasks);
 
-  return [tasks, isLoading || isLoadingUser, refetch];
+  return [tasks, isLoading, refetch];
 };
 
 export default useTask;

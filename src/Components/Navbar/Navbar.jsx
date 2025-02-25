@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { FaUser } from "react-icons/fa";
 import useUser from "../../Hooks/useUser";
+import useAuth from "../../Hooks/useAuth";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
+  const { logout } = useAuth();
+  const [userData] = useUser();
 
-  // useUser হুক থেকে ডাটা আনা
-  const [userData, isLoading] = useUser();
-
-  // userData যদি undefined হয়, তাহলে Default Empty Object সেট করা
   const user = userData || {};
 
   return (
@@ -25,33 +25,31 @@ const Navbar = () => {
               onClick={() => setProfileOpen(!profileOpen)}
               className="flex items-center gap-2"
             >
-              {isLoading ? (
-                <span>Loading...</span>
-              ) : (
-                <img
-                  src={user?.photo || "https://via.placeholder.com/40"}
-                  alt="User"
-                  className="w-10 h-10 rounded-full border"
-                />
-              )}
+              <img
+                src={user?.photo || "https://via.placeholder.com/40"}
+                alt="User"
+                className="w-10 h-10 rounded-full border"
+              />
             </button>
 
             {profileOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded-lg shadow-lg p-4">
-                {isLoading ? (
-                  <p className="text-center">Loading...</p>
-                ) : (
-                  <>
-                    <p className="font-bold text-lg">
-                      {user?.name || "Unknown User"}
-                    </p>
-                    <p className="text-gray-600">{user?.email || "No Email"}</p>
-                    <hr className="my-2" />
-                    <button className="w-full bg-red-500 text-white py-2 rounded hover:bg-red-600">
+                <>
+                  <p className="font-bold text-lg">
+                    {user?.name || "Unknown User"}
+                  </p>
+                  <p className="text-gray-600">{user?.email || "No Email"}</p>
+                  <hr className="my-2" />
+                  <button
+                    type="button"
+                    className="w-full bg-red-500 text-white py-2 rounded hover:bg-red-600"
+                  >
+                    <Link onClick={() => logout()} to="/login">
+                      {" "}
                       Log Out
-                    </button>
-                  </>
-                )}
+                    </Link>
+                  </button>
+                </>
               </div>
             )}
           </div>

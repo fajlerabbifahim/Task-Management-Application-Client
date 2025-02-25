@@ -21,7 +21,11 @@ const Home = () => {
           Add Task
         </button>
       </div>
-      <AddTaskModal isOpen={isModalOpen} onClose={closeModal} />
+      <AddTaskModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        refetch={refetch()}
+      />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto gap-6   ">
         <div className="border-2  rounded-lg">
